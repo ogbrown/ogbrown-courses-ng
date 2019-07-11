@@ -20,24 +20,15 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
+export class HomeComponent {
 
-  constructor(private siteService: SiteService) {}
 
-  ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
-  }
 }

@@ -20,24 +20,18 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BasicCourseOfferingDto} from '../shared/basic-course-offering-dto.model';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
+@Injectable({providedIn: 'root'})
+export class CourseService {
 
-  constructor(private siteService: SiteService) {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
+  fetchBasicCoursesOfferingInfo() {
+    return this.http.get<BasicCourseOfferingDto[]>('http://localhost:8080/ogbrown-courses/course-offerings/');
   }
+
 }
+

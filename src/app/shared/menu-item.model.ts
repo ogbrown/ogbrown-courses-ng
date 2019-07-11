@@ -20,24 +20,12 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+export class MenuItem {
+  constructor(public title: string,
+              public urlSlug: string,
+              public contentHeader: string,
+              public menuOrder: number,
+              public depth: number) {}
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
 
-  constructor(private siteService: SiteService) {}
-
-  ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
-  }
 }

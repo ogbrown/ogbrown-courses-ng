@@ -1,0 +1,11 @@
+<table *ngIf="courseOfferingList.length > 0">
+  <tr *ngFor="let offering of courseOfferingList" class="course-list-row">
+    <td class="col-md-2">
+      <ul><li>Planning</li>
+      </ul>
+    </td>
+    <td>
+      <h3><a href="ogbrown-courses-demo/{{ offering.urlSlug }}/">{{ offering.title }}</a>&nbsp;<small>:{{ offering.courseOfferingStatus }}</small></h3><h6>Prerequisites: {{ 0 === offering.prerequisitesShortNames.length?'none':offering.prerequisitesShortNames }}</h6>
+    </td>
+  </tr>
+</table>

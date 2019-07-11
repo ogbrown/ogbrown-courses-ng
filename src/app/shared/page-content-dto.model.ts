@@ -20,24 +20,26 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import {CourseSessionDto} from './course-session-dto.model';
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
-
-  constructor(private siteService: SiteService) {}
-
-  ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
-  }
+export interface PageContentDto {
+  id: string;
+  title: string;
+  urlSlug: string;
+  folderUrlSlug: string;
+  metaDescription: string;
+  contentHeader: string;
+  metaKeywordsCsv: string;
+  content: string;
+  published: boolean;
+  protectedPage: boolean;
+  pageOrd: number;
+  parentPages: PageContentDto[];
+  childPages: PageContentDto[];
+  prevPageLinkOverride: string;
+  previousPage: PageContentDto;
+  nextPageLinkOverride: string;
+  nextPage: PageContentDto;
+  courseSessions: CourseSessionDto[];
+  notes: string;
 }

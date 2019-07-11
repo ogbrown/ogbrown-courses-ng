@@ -1,0 +1,27 @@
+<div class="footer-nav-menu pull-left">
+  <nav id="footer-navigation" class="secondary-navigation"
+       role="navigation">
+    <h1 class="menu-toggle sr-only">Footer Menu</h1>
+
+    <div class="sample-menu-footer-container">
+      <ul *ngIf="footerMenu.length > 0" id="sample-menu-footer" class="list-inline dividers">
+        <li *ngFor="let item of footerMenu" id="{{ 'menu-item-sample-' + item.id }}"
+            class="{{ 'menu-item menu-item-type-custom menu-item-object-custom menu-item-sample-' + item.id }}">
+              <a *ngIf="item.urlSlug !== 'home'" title="{{ item.title }}" href="{{ '/ogbrown-courses-demo/' + item.urlSlug }}">
+                <span *ngIf="item.urlSlug === '#page'" class="fa fa-chevron-up"></span> {{ item.contentHeader }}
+              </a>
+          <a *ngIf="item.urlSlug === 'home'" title="{{ item.title }}" href="/ogbrown-courses-demo/">
+            Home
+          </a>
+        </li>
+      </ul>
+      <ul *ngIf="footerMenu.length === 0" id="sample-menu-footer-default" class="list-inline dividers">
+        <li id="menu-item-sample-0" class="{menu-item menu-item-type-custom menu-item-object-custom menu-item-sample-0">
+          <a title="Home" href="/ogbrown-courses-demo/">
+            Home
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

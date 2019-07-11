@@ -1,0 +1,5 @@
+<p > {{ stack.stackName }}: {{ stack.baseTechnology }} built using
+  <a *ngFor="let tech of technologies" href="{{ tech.infoUrl }}" rel="platform" target="_blank">
+    {{ tech.name + ' ' + tech.version }}, </a>
+  and all running on an {{ stack.serverTechnology }}.
+</p>

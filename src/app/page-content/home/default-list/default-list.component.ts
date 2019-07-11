@@ -20,24 +20,24 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import { Component, OnInit } from '@angular/core';
+import {CourseService} from '../../../service/course.service';
+import {BasicCourseOfferingDto} from '../../../shared/basic-course-offering-dto.model';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-default-list',
+  templateUrl: './default-list.component.html',
+  styleUrls: ['./default-list.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
+export class DefaultListComponent implements OnInit {
+  courseOfferingList: BasicCourseOfferingDto[] = [];
 
-  constructor(private siteService: SiteService) {}
+  constructor(private courseService: CourseService) {}
 
   ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
+    this.courseService.fetchBasicCoursesOfferingInfo().subscribe(items => {
+      this.courseOfferingList = items;
+    });
   }
+
 }

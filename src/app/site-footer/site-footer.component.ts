@@ -20,24 +20,34 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import { Component, OnInit } from '@angular/core';
+import {Technology} from './technology.model';
+import {TechnologyStack} from './technologyStack.model';
+import {SiteService} from '../service/site.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-site-footer',
+  templateUrl: './site-footer.component.html',
+  styleUrls: ['./site-footer.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
+export class SiteFooterComponent implements OnInit {
 
-  constructor(private siteService: SiteService) {}
+  constructor(private siteService: SiteService) { }
+
+  getClientStack() {
+    return this.siteService.getClientStack();
+  }
+  getServerStack() {
+    return this.siteService.getServerStack();
+  }
+  getClientTechnologyStackInfo() {
+    return this.siteService.getClientTechnologyStackInfo();
+  }
+  getServerTechnologyStackInfo() {
+    return  this.siteService.getServerTechnologyStackInfo();
+  }
 
   ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
   }
+
 }

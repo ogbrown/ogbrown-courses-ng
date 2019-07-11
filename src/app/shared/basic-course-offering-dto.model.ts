@@ -20,24 +20,20 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
-
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
-
-  constructor(private siteService: SiteService) {}
-
-  ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
-  }
+export interface BasicCourseOfferingDto {
+  id: number;
+  courseNumber: number;
+  termNumber: string;
+  term: string;
+  courseLabel: string;
+  title: string;
+  shortTitle: string;
+  start: string;
+  startTime: string;
+  endTime: string;
+  end: string;
+  daysOfWeek: string;
+  courseOfferingStatus: string;
+  prerequisitesShortNames: string;
+  urlSlug: string;
 }

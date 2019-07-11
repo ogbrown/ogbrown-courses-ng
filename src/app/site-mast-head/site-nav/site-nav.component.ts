@@ -20,24 +20,31 @@
  * SOFTWARE.
  */
 
-import {Component, OnInit} from '@angular/core';
-import {SiteService} from './service/site.service';
-import {SiteInformation} from './shared/site-information.model';
+import { Component, OnInit } from '@angular/core';
+import {MenuItemDto} from '../../shared/menu-item-dto.model';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-site-nav',
+  templateUrl: './site-nav.component.html',
+  styleUrls: ['./site-nav.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'ogbrown-courses-ng';
-  keywords: string;
+export class SiteNavComponent implements OnInit {
 
-  constructor(private siteService: SiteService) {}
+  topMenu: MenuItemDto[] = [];
+
+  constructor(private http: HttpClient) {}
+
+  private fetchSiteTopMenu() {
+    this.http.get<MenuItemDto[]>('http://localhost:8080/ogbrown-courses/pages/page/home/menu/sitetop')
+      .subscribe(items => {
+        console.log(items);
+        this.topMenu = items;
+      });
+  }
 
   ngOnInit() {
-    const siteInfo: SiteInformation = this.siteService.fetchSiteInformation();
-    this.title = siteInfo.siteTitle;
-    this.keywords = siteInfo.siteKeywords;
+    this.fetchSiteTopMenu();
   }
+
 }

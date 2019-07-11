@@ -1,0 +1,20 @@
+<footer id="colophon" class="site-footer" role="contentinfo">
+
+  <div class="after-footer">
+    <div class="container">
+
+      <div class="row">
+        <app-site-footer-menu></app-site-footer-menu>
+        <app-site-credit></app-site-credit>
+      </div>
+      <div class="row">
+        <app-technology-stack [stack]="getClientTechnologyStackInfo()" [technologies]="getClientStack()"></app-technology-stack>
+        <app-technology-stack [stack]="getServerTechnologyStackInfo()" [technologies]="getServerStack()"></app-technology-stack>
+      </div>
+      <!-- .site-credits -->
+    </div>
+    <!-- .container -->
+  </div>
+  <!-- .after-footer -->
+</footer>
+<!-- #colophon -->
